@@ -10,7 +10,8 @@ using namespace std;
 	
 	static ToDoApp* m_handle;
 	int fd;
-	char buf[20];
+	char writeBuff[20];
+	char readBuff[50];
 	ToDoApp::ToDoApp()
 	{
 		cout<<"constructor of to do application class"<<endl;
@@ -64,8 +65,8 @@ using namespace std;
 		cout<<"enter title"<<endl;
 		//if the pointer is not initialized , and if we try to write data to it throws segementaion fault and the core will be dumped
 		//never do char * buf;
-		cin>>buf;
-		size_t byteWritten = write(fd,buf,strlen(buf));
+		cin>>writeBuff;
+		size_t byteWritten = write(fd,writeBuff,strlen(writeBuff));
 		if(byteWritten<0)
 		{
 		//	printf("%s", explain_write(fd, "just writing /n",50));
@@ -76,6 +77,10 @@ using namespace std;
 	int ToDoApp::viewMyList()
 	{
 		cout<<"selected view my list"<<endl;
+		int bytesRead = read(fd,readBuff,50);
+		cout<<"number of bytes read "<<bytesRead<<endl;
+		cout<<"your tasks"<<endl;
+		cout<<readBuff<<endl;
 		return 0;
 	}
 
