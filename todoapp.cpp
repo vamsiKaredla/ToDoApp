@@ -66,7 +66,9 @@ using namespace std;
 		//if the pointer is not initialized , and if we try to write data to it throws segementaion fault and the core will be dumped
 		//never do char * buf;
 		cin>>writeBuff;
-		size_t byteWritten = write(fd,writeBuff,strlen(writeBuff));
+		//setting the file offset to the end of the file so that the new entries will be added at the end of the file
+		lseek(fd,0,SEEK_END);
+		size_t byteWritten = write(fd,&writeBuff,strlen(writeBuff));
 		if(byteWritten<0)
 		{
 		//	printf("%s", explain_write(fd, "just writing /n",50));
@@ -77,7 +79,10 @@ using namespace std;
 	int ToDoApp::viewMyList()
 	{
 		cout<<"selected view my list"<<endl;
-		int bytesRead = read(fd,readBuff,50);
+		//setting the file offset to the start of the file so all the entries will be read if the file offset is not set then read function call will read from the end of the file and the entries 			wont be copied to the buffer
+		//it appears as if there are no entries in the file
+		lseek(fd,0,SEEK_SET);
+		int bytesRead = read(fd,&readBuff,50);
 		cout<<"number of bytes read "<<bytesRead<<endl;
 		cout<<"your tasks"<<endl;
 		cout<<readBuff<<endl;
