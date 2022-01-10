@@ -62,11 +62,10 @@ using namespace std;
 	int ToDoApp::enterIntoList()
 	{
 		cout<<"enter title"<<endl;
-	//	char* title=NULL;
-	//	cin>>title;
-	//	cout<<"entered title \t"<<title<<endl;
-	//	strcpy(buf,title);
-		size_t byteWritten = write(fd,"just writing /n",50);
+		//if the pointer is not initialized , and if we try to write data to it throws segementaion fault and the core will be dumped
+		//never do char * buf;
+		cin>>buf;
+		size_t byteWritten = write(fd,buf,strlen(buf));
 		if(byteWritten<0)
 		{
 		//	printf("%s", explain_write(fd, "just writing /n",50));
