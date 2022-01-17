@@ -6,12 +6,14 @@
 #include<sys/stat.h>
 #include<fcntl.h>
 #include<string.h>
+
+#define MAX_BUFF_SIZE 100
 using namespace std;
 	
 	static ToDoApp* m_handle;
 	int fd;
-	char writeBuff[20];
-	char readBuff[50];
+	char writeBuff[MAX_BUFF_SIZE];
+	char readBuff[MAX_BUFF_SIZE];
 	ToDoApp::ToDoApp()
 	{
 		cout<<"constructor of to do application class"<<endl;
@@ -65,7 +67,12 @@ using namespace std;
 		cout<<"enter title"<<endl;
 		//if the pointer is not initialized , and if we try to write data to it throws segementaion fault and the core will be dumped
 		//never do char * buf;
-		cin>>writeBuff;
+		char buf[50];
+
+		cin>>buf;
+
+		strcpy(writeBuff,buf);
+		strcat(writeBuff,"/");
 		//setting the file offset to the end of the file so that the new entries will be added at the end of the file
 		lseek(fd,0,SEEK_END);
 		size_t byteWritten = write(fd,&writeBuff,strlen(writeBuff));
@@ -82,10 +89,25 @@ using namespace std;
 		//setting the file offset to the start of the file so all the entries will be read if the file offset is not set then read function call will read from the end of the file and the entries 			wont be copied to the buffer
 		//it appears as if there are no entries in the file
 		lseek(fd,0,SEEK_SET);
-		int bytesRead = read(fd,&readBuff,50);
+		int bytesRead = read(fd,&readBuff,MAX_BUFF_SIZE);
 		cout<<"number of bytes read "<<bytesRead<<endl;
-		cout<<"your tasks"<<endl;
-		cout<<readBuff<<endl;
+		char buf[bytesRead];
+		int j=0;
+		char specialChar='/';
+		for(int i=0;i<=bytesRead;i++)
+		{
+			if(readBuff[i]==specialChar)
+			{
+				cout<<"+++++=============+++++++"<<endl;
+				cout<<buf<<endl;
+				j=0;
+				continue;
+			}
+
+			buf[j]=readBuff[i];
+			j++;
+		}
+		
 		return 0;
 	}
 
