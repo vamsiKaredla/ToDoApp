@@ -13,7 +13,7 @@ void launch_HMI()
 void launch_Service()
 {
 	printf("lauch Service process\n");
-	int status = execl("./ToDoAPP","./ToDoApp",NULL);
+	int status = execl("./ToDoHmi","./ToDoApp",NULL);
 	if(status == -1)
 	{
 		printf("failed to launch process\n");
