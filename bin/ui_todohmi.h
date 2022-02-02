@@ -36,7 +36,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(280, 80, 89, 25));
+        pushButton->setGeometry(QRect(290, 60, 89, 25));
         ToDoHmi->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ToDoHmi);
         menubar->setObjectName(QString::fromUtf8("menubar"));

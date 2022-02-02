@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = ToDoHmi1.0.0
-DISTDIR = /home/naruto/Documents/Projects/ToDoApp/build-ToDoHmi-Desktop_Qt_6_1_3_GCC_64bit-Debug/.tmp/ToDoHmi1.0.0
+DISTDIR = /home/naruto/Documents/Projects/ToDoApp/bin/.tmp/ToDoHmi1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/naruto/Qt/6.1.3/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/naruto/Qt/6.1.3/gcc_64/lib/libQt6Widgets.so /home/naruto/Qt/6.1.3/gcc_64/lib/libQt6Gui.so /home/naruto/Qt/6.1.3/gcc_64/lib/libQt6Core.so -lpthread -lGL   
@@ -654,7 +654,7 @@ moc_todohmi.cpp: ../ToDoHmi/todohmi.h \
 		../../../../Qt/6.1.3/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.3/gcc_64/libexec/moc
-	/home/naruto/Qt/6.1.3/gcc_64/libexec/moc $(DEFINES) --include /home/naruto/Documents/Projects/ToDoApp/build-ToDoHmi-Desktop_Qt_6_1_3_GCC_64bit-Debug/moc_predefs.h -I/home/naruto/Qt/6.1.3/gcc_64/mkspecs/linux-g++ -I/home/naruto/Documents/Projects/ToDoApp/ToDoHmi -I/home/naruto/Qt/6.1.3/gcc_64/include -I/home/naruto/Qt/6.1.3/gcc_64/include/QtWidgets -I/home/naruto/Qt/6.1.3/gcc_64/include/QtGui -I/home/naruto/Qt/6.1.3/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ToDoHmi/todohmi.h -o moc_todohmi.cpp
+	/home/naruto/Qt/6.1.3/gcc_64/libexec/moc $(DEFINES) --include /home/naruto/Documents/Projects/ToDoApp/bin/moc_predefs.h -I/home/naruto/Qt/6.1.3/gcc_64/mkspecs/linux-g++ -I/home/naruto/Documents/Projects/ToDoApp/ToDoHmi -I/home/naruto/Qt/6.1.3/gcc_64/include -I/home/naruto/Qt/6.1.3/gcc_64/include/QtWidgets -I/home/naruto/Qt/6.1.3/gcc_64/include/QtGui -I/home/naruto/Qt/6.1.3/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ToDoHmi/todohmi.h -o moc_todohmi.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
